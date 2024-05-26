@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Phra Nakhon Khiri Historical Park</title>
+		<style>
+			*
+			{
+				box-sizing:border-box;
+			}
+			div,h3
+			{
+				position:relative;
+			}
+			#root
+			{
+				width:100%;
+				height:100%;
+				overflow:hidden;
+			}
+			.div_menu
+			{
+				width:200px;
+				height:50px;
+				margin:auto;
+				padding:10px;
+				text-align:center;
+			}
+		</style>
+	</head>
+	<body style="margin:0px;">
+		<img src="img_head_2.jpg" style="width:100%;opacity:0.5;position:absolute;">
+		<div id="root" class="layer" style="z-index:1;">
+			<h3 style="width:100%;height:70px;margin:0px;padding:20px 0px;text-align:center;">Phra Nakhon Khiri Historical Park</h3>
+			<div id="div_1" class="div_menu" style="background-color: #ffaaaa;" onclick="show_text('ประวัติโดยรวม')">ประวัติโดยรวม</div>
+			<div id="div_2" class="div_menu" style="background-color: #aaffaa;" onclick="show_map()">แผนที่ภายใน</div>
+			<div id="div_3" class="div_menu" style="background-color: #aaaaff;" onclick="show_text('วิธีการเดินทาง')">วิธีการเดินทาง</div>
+			<div id="div_4" class="div_menu" style="background-color: #ffaaff;" onclick="show_text('วิธีการเข้าชม/ราคา')">วิธีการเข้าชม/ราคา</div>
+			<div id="div_5" class="div_menu" style="background-color: #aaffff;" onclick="show_text('แนะนำร้านค้า/สินค้า')">แนะนำร้านค้า/สินค้า</div>
+			<div id="div_6" class="div_menu" style="background-color: #ffffaa;" onclick="show_text('วิธีการใช้แอป')">วิธีการใช้แอป</div>
+		</div>
+		<div id="text_screen" class="layer" style="z-index:1;display:none;">
+			<div style="z-index:10;margin:auto;width:200px;height:50px;background-color:#ffaaaa;text-align:center;position:absolute;top:0px;padding:10px;" onclick="home()">Home</div>
+			<h3 id="text_screen_head" style="width:100%;height:70px;margin:0px;padding:20px 0px;text-align:center;"></h3>
+			<p id="text_screen_p" style="margin:auto;width:700px;"></p>
+		</div>
+		<div id="map" class="layer" style="z-index:1;display:none;">
+			<div style="z-index:10;margin:auto;width:200px;height:50px;background-color:#ffaaaa;text-align:center;position:absolute;top:0px;padding:10px;" onclick="home()">Home</div>
+			<h3 id="map_screen_head" style="width:100%;height:70px;margin:0px;padding:20px 0px;text-align:center;">แผนที่ภายใน</h3>
+			<img src="map_phranakhonkhiri.png" style="width:100%;position:absolute;">
+			<div style="left:100px;top:410px;width:190px;height:200px;border:5px solid red" onclick="show_map_detail(1)"></div>
+		</div>
+		<div id="map_detail" class="layer" style="z-index:1;display:none;">
+			<div style="z-index:10;margin:auto;width:200px;height:50px;background-color:#ffaaaa;text-align:center;position:absolute;top:0px;padding:10px;" onclick="show_map()">Map</div>
+			<h3 id="map_detail_head" style="width:100%;height:70px;margin:0px;padding:20px 0px;text-align:center;"></h3>
+			<img src="01_10.jpg" style="width:100%;">
+			<audio id="audio" controls></audio>
+			<p id="map_detail_p" style="margin:auto;width:700px;"></p>
+		</div>
+		<script>
+			function show_text(menu_name)
+			{
+				for(var i=0;i<document.getElementsByClassName("layer").length;i++)
+				{
+					document.getElementsByClassName("layer")[i].style.display="none";
+				}
+				document.getElementById("text_screen").style.display="";
+				document.getElementById("text_screen_head").innerHTML=menu_name;
+				document.getElementById("text_screen_p").innerHTML=menu_name;
+				for(var i=0;i<10;i++)
+				{
+					document.getElementById("text_screen_p").innerHTML=document.getElementById("text_screen_p").innerHTML+document.getElementById("text_screen_p").innerHTML;
+				}
+			}
+			function show_map()
+			{
+				for(var i=0;i<document.getElementsByClassName("layer").length;i++)
+				{
+					document.getElementsByClassName("layer")[i].style.display="none";
+				}
+				document.getElementById("map").style.display="";
+			}
+			function show_map_detail(map_id)
+			{
+				for(var i=0;i<document.getElementsByClassName("layer").length;i++)
+				{
+					document.getElementsByClassName("layer")[i].style.display="none";
+				}
+				document.getElementById("map_detail").style.display="";
+				var name,detail,filename;
+				switch(map_id)
+				{
+					case 1:
+					{
+						name="พระธาตุจอมเพชร";
+						detail="พระธาตุจอมเพชร บริเวณยอดกลางของเขามหาสวรรค์นี้ แต่เดิมมีพระเจดีย์โบราณของวัดอินทรคีรีองค์หนึ่ง ซึ่งชำรุดทรุดโทรม พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว โปรดเกล้าฯ บูรณะทางเดินและพระเจดีย์ โดยก่อปูนหุ้มเป็นพระเจดีย์องค์ใหญ่ ออกแบบโดยพระเจ้าบรมวงศ์เธอ กรมขุนราชสีหวิกรม ลักษณะเป็นเจดีย์ทรงกลมแบบลังกา สูงจากฐานถึงยอด 40 เมตร ฐานกว้าง 20 เมตร ตั้งอยู่บนฐานทักษิณ 2 ชั้น ภายในทำเป็นห้องกลวงทรงกลม มีเสาใหญ่รับน้ำหนักอยู่ตรงกลาง มีช่องเข้าไปภายในได้ทั้ง 4 ทิศ และจากห้องกลมบริเวณฐานนั้นมีช่องบันไดขึ้นไปลานทักษิณชั้นที่ 2 ได้อีก 4 ทาง จากลานทักษิณชั้นที่ 2 นี้ สามารถมองเห็นทัศนียภาพของเมืองเพชรบุรีได้โดยรอบ<br>พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช สมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ พร้อมด้วยสมเด็จพระเทพรัตนราชสุดาฯ สยามบรมราชกุมารี และสมเด็จพระเจ้าลูกเธอ เจ้าฟ้าจุฬาภรณวลัยลักษณ์ อัครราชกุมารี ได้เสด็จพระราชดำเนินมาทรงบำเพ็ญพระราชกุศลวิสาขบูชา และทรงเวียนเทียนรอบพระธาตุจอมเพชรนี้ เมื่อวันที่ 27 พฤษภาคม พุทธศักราช 2515<br>การบูรณะพระธาตุจอมเพชรนี้ กรมศิลปากรร่วมกับจังหวัดเพชรบุรี ข้าราชการ คณะสงฆ์ และประชาชน ได้ดำเนินการบูรณะพระธาตุจอมเพชร เมื่อพุทธศักราช ๒๕๒๖ แล้วเสร็จเมื่อ พุทธศักราช 2531 ใช้งบประมาณทั้งสิ้น 12 ล้านบาท มีประชาชนทุกภาคส่วนร่วมแรงตำปูนกว่า 2,973 คน เพื่อแสดงความจงรักภักดีและเฉลิมพระเกียรติพระบาทสมเด็จพระเจ้าอยู่หัวภูมิพลอดุลยเดช รัชกาลที่ 9 เนื่องในวโรกาสมหามงคลเฉลิมพระชนมพรรษา 5 รอบ และพระราชพิธีมังคลาภิเษก เมื่อแล้วเสร็จ พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดชฯ บรมนาถบพิตร ได้โปรดฯ พระราชทานพระบรมสารีริกธาตุมาบรรจุไว้ในองค์พระธาตุจอมเพชร เมื่อวันที่ 20 กรกฎาคม พุทธศักราช 2532 เวลา 15.00 น. โดยทรงพระกรุณาโปรดเกล้า โปรดกระหม่อมให้ สมเด็จพระเจ้าอยู่หัว มหาวชิราลงกรณ บดินทรเทพยวรางกูร (ขณะดำรงพระอิสริยศที่ สมเด็จพระบรมโอรสาธิราชฯ สยามมกุฎราชกุมาร) เสด็จพระราชดำเนินแทนพระองค์ ทรงเปิดอุทยานประวัติศาสตร์พระนครคีรี และบรรจุพระบรมสารีริกธาตุองค์พระธาตุจอมเพชร นับเป็นพระมหากรุณาธิคุณล้นเกล้าล้นกระหม่อมต่อกรมศิลปากรและชาวเพชรบุรีอย่างหาที่สุดมิได้";
+						filename="Desire.mp3";
+					}break;
+				}
+				document.getElementById("map_detail_head").innerHTML=name;
+				document.getElementById("map_detail_p").innerHTML=detail;
+				document.getElementById("audio").src="./"+filename;
+			}
+			function home()
+			{
+				for(var i=0;i<document.getElementsByClassName("layer").length;i++)
+				{
+					document.getElementsByClassName("layer")[i].style.display="none";
+				}
+				document.getElementById("root").style.display="";
+			}
+		</script>
+	</body>
+</html>
